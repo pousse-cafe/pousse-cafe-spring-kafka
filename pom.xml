@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.10.0-SNAPSHOT</version>
+        <version>0.11.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>pousse-cafe-spring-kafka</artifactId>
@@ -19,12 +19,12 @@
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-core</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <version>0.11.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-jackson</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <version>0.11.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -45,4 +45,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <scm>
+        <connection>scm:git:https://github.com/pousse-cafe/pousse-cafe-spring-kafka.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/pousse-cafe/pousse-cafe-spring-kafka.git</developerConnection>
+        <url>http://github.com/pousse-cafe/pousse-cafe-spring-kafka</url>
+    </scm>
 </project>
