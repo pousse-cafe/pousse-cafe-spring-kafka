@@ -10,8 +10,8 @@ import org.springframework.kafka.listener.KafkaMessageListenerContainer;
 import org.springframework.kafka.listener.MessageListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
+import poussecafe.messaging.MessageReceiverConfiguration;
 import poussecafe.messaging.MessageSender;
-import poussecafe.processing.MessageBroker;
 
 @Component
 public class MessageSenderAndReceiverFactory implements InitializingBean, MessageListener<String, String> {
@@ -44,9 +44,9 @@ public class MessageSenderAndReceiverFactory implements InitializingBean, Messag
         listenerContainer.start();
     }
 
-    public KafkaMessageReceiver buildMessageReceiver(MessageBroker messageBroker) {
+    public KafkaMessageReceiver buildMessageReceiver(MessageReceiverConfiguration configuration) {
         return new KafkaMessageReceiver.Builder()
-                .messageBroker(messageBroker)
+                .configuration(configuration)
                 .messageSenderAndReceiverFactory(this)
                 .build();
     }

@@ -4,18 +4,18 @@ import java.util.Objects;
 import poussecafe.jackson.JacksonMessageAdapter;
 import poussecafe.messaging.Message;
 import poussecafe.messaging.MessageReceiver;
-import poussecafe.processing.MessageBroker;
+import poussecafe.messaging.MessageReceiverConfiguration;
 
 public class KafkaMessageReceiver extends MessageReceiver<SpringKafkaEnvelope> {
 
     public static class Builder {
 
-        public Builder messageBroker(MessageBroker messageBroker) {
-            this.messageBroker = messageBroker;
+        public Builder configuration(MessageReceiverConfiguration configuration) {
+            this.configuration = configuration;
             return this;
         }
 
-        private MessageBroker messageBroker;
+        private MessageReceiverConfiguration configuration;
 
         public Builder messageSenderAndReceiverFactory(MessageSenderAndReceiverFactory messageSenderAndReceiverFactory) {
             this.messageSenderAndReceiverFactory = messageSenderAndReceiverFactory;
@@ -25,17 +25,17 @@ public class KafkaMessageReceiver extends MessageReceiver<SpringKafkaEnvelope> {
         private MessageSenderAndReceiverFactory messageSenderAndReceiverFactory;
 
         public KafkaMessageReceiver build() {
-            Objects.requireNonNull(messageBroker);
+            Objects.requireNonNull(configuration);
             Objects.requireNonNull(messageSenderAndReceiverFactory);
 
-            KafkaMessageReceiver receiver = new KafkaMessageReceiver(messageBroker);
+            KafkaMessageReceiver receiver = new KafkaMessageReceiver(configuration);
             receiver.messageSenderAndReceiverFactory = messageSenderAndReceiverFactory;
             return receiver;
         }
     }
 
-    private KafkaMessageReceiver(MessageBroker messageBroker) {
-        super(messageBroker);
+    private KafkaMessageReceiver(MessageReceiverConfiguration configuration) {
+        super(configuration);
     }
 
     private MessageSenderAndReceiverFactory messageSenderAndReceiverFactory;
